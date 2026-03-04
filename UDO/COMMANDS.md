@@ -101,6 +101,7 @@
 | `Enable bridge` | Activate bridge, initialize files |
 | `List adapters` | Show available bridge adapters in `.bridge/adapters/` |
 | `Add adapter [platform]` | Set up a new bridge adapter |
+| `Pre-flight [REQ-XXXX]` | Manually run pre-flight complexity audit on a specific request |
 
 ## Memory
 
@@ -146,6 +147,7 @@
 | `cb` | Check bridge |
 | `bs` | Bridge status |
 | `bu` | Backup |
+| `pf` | Pre-flight |
 
 ---
 

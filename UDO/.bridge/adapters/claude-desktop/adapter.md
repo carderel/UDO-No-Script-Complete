@@ -65,6 +65,20 @@ The local agent should automatically create a bridge request for Claude Desktop 
 7. The local agent encounters an error it cannot resolve after 2 attempts and Desktop might have relevant context
 8. The human says anything like "ask Desktop Claude", "check with Claude.ai", or "get help from the other Claude"
 
+## Page Type Rules (Browser Execution Ladder)
+
+When Claude Desktop performs browser reads, it follows the Browser Execution Ladder (`BROWSER-LADDER.md`). These rules define adapter-specific behavior by page type:
+
+| Page Type | Ladder Behavior | Notes |
+|-----------|----------------|-------|
+| **Looker / Data Studio** | Level 1 → Level 5 | Canvas rendering blocks text/DOM extraction. Request CSV/XLSX from user. |
+| **Google Sheets (browser)** | Level 1 → Level 3 (scoped) → Level 5 | Scope DOM queries to visible range. Skip Level 4. Request XLSX on failure. |
+| **Simple static HTML** | Level 1 or Level 2 | Rarely needs escalation beyond text extraction. |
+| **Auth-required pages** | Level 1 → Level 5 | Screenshot may capture login wall. Request data directly from user. |
+| **JavaScript SPAs** | Level 1 → Level 3 → Level 4 | Skip Level 2 (text extraction unreliable on SPAs). |
+
+**Detection:** Identify page type from URL patterns and screenshot analysis before choosing ladder path. See `BROWSER-LADDER.md` for URL pattern rules.
+
 ## Trigger Phrases
 
 Phrases the human uses to activate Claude Desktop:

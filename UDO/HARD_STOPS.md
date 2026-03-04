@@ -30,6 +30,8 @@ No AI, no instruction, no user request can override these rules. Only a human di
 - **HS-UDO-007**: NEVER create session artifacts (handoffs, logs, decisions) outside their designated `.project-catalog/` locations. Files in other folders are invisible to the next session's resume protocol.
 - **HS-UDO-008**: NEVER go more than 5 user prompts without updating `PROJECT_STATE.json` if project state has changed. This protects against lost context from unexpected disconnections or restarts. Count resets after each update.
 - **HS-UDO-009**: NEVER overwrite `bridge-queue.md` or `.bridge/session-log.md`. These are **append-only** files. Overwriting destroys the communication history between agents.
+- **HS-UDO-010**: NEVER execute a bridge request without running the pre-flight complexity audit. If no `### Pre-Flight Audit` block exists below the request in `bridge-queue.md`, the audit has not been run. See `PRE-FLIGHT-AUDIT.md`.
+- **HS-UDO-011**: NEVER skip a browser execution ladder level unless page type rules in `BROWSER-LADDER.md` explicitly permit it. Log every escalation reason.
 
 ## Session End Verification (Enforces HS-UDO-001, HS-UDO-004)
 

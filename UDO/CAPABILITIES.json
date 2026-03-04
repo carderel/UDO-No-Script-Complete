@@ -32,7 +32,9 @@
   "bridge": {
     "enabled": true,
     "adapters_available": ["claude-desktop"],
-    "notes": "Bridge module active. Claude Desktop adapter configured."
+    "pre_flight_audit": true,
+    "browser_execution_ladder": true,
+    "notes": "Bridge module active. Claude Desktop adapter configured. Pre-flight complexity audit and browser execution ladder enforced on all bridge requests."
   },
   "notes": "Updated 2026-03-03. Claude Code has full file system access, bash execution, web search, and can spawn subagents for parallel work. Bridge module installed with Claude Desktop adapter."
 }

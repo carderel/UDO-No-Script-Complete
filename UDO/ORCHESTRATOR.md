@@ -151,6 +151,7 @@ If unclear which mode applies, use this test:
 □ Am I in the right mode? (RC for analysis, Persona for delivery)
 □ If in Persona mode, do I have a handoff packet?
 □ If bridge is active, have I checked for pending bridge responses?
+□ If handling a bridge request, have I run the pre-flight audit?
 ```
 
 **If any answer is "no" when it should be "yes" → STOP and fix it.**
@@ -295,6 +296,8 @@ Ended: [timestamp]
 | **Confidence stated without evidence** | **HALT, apply RC constraints** |
 | Bridge request pending > 30 min | Flag for human attention, update bridge-state.json |
 | Bridge error_state flag true | HALT bridge requests, escalate to human |
+| Pre-flight complexity score > 10 | HALT, break into separate requests or escalate to human |
+| Browser ladder reaches Level 5 | Flag to user, all automated options exhausted, request static file |
 
 ---
 
@@ -316,7 +319,7 @@ Analysis → RC Mode. Delivery → Persona Mode. Never mix.
 Check `CAPABILITIES.json` before assigning tasks.
 
 ### 3.5. Bridge Awareness
-If `.bridge/` exists and has active adapters, check `bridge-state.json` during resume. Before attempting tasks outside your capabilities (per `CAPABILITIES.json`), check if a bridge adapter can handle it. Follow error escalation: self-resolve (2 attempts) → bridge request → human intervention. See `BRIDGE-PROTOCOL.md` for full details.
+If `.bridge/` exists and has active adapters, check `bridge-state.json` during resume. Before attempting tasks outside your capabilities (per `CAPABILITIES.json`), check if a bridge adapter can handle it. Follow error escalation: self-resolve (2 attempts) → bridge request → human intervention. Before executing any bridge request, run the pre-flight complexity audit (`PRE-FLIGHT-AUDIT.md`). For browser-based reads, follow the browser execution ladder (`BROWSER-LADDER.md`). See `BRIDGE-PROTOCOL.md` for full details.
 
 ### 4. State Sovereignty
 All project state flows through `PROJECT_STATE.json`. Read before acting. Update after completing.

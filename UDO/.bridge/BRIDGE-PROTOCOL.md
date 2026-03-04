@@ -22,6 +22,8 @@ Either agent can initiate requests. The human operator acts as the trigger, tell
 ```
 .bridge/
 ├── BRIDGE-PROTOCOL.md      # This file — the rules all agents follow
+├── PRE-FLIGHT-AUDIT.md     # Complexity scoring for bridge requests
+├── BROWSER-LADDER.md       # Escalation order for browser reads
 ├── bridge-queue.md          # Active requests and responses (the communication channel)
 ├── bridge-state.json        # Machine-readable status flags
 ├── session-log.md           # Running log of all bridge activity
@@ -98,6 +100,22 @@ Sequential: REQ-0001, REQ-0002, etc. Always increment from the last ID in the qu
 | `document-creation` | Need a document, presentation, or spreadsheet created |
 | `troubleshoot` | Something is broken, need help diagnosing |
 | `other` | Doesn't fit above categories |
+
+---
+
+## Pre-Flight Complexity Audit
+
+Every bridge request MUST pass a complexity audit before execution (**HS-UDO-010**). The receiving agent scores each operation in the request by tier (0-5 pts) and sums the weights. Scores 0-6 execute in a single prompt; 7-10 require phased decomposition and human approval; >10 trigger a HALT circuit breaker. The audit block is appended below the request in `bridge-queue.md` (respecting append-only HS-UDO-009). If no audit block exists, the request has not been audited and MUST NOT be executed.
+
+**Full protocol:** See `PRE-FLIGHT-AUDIT.md`
+
+---
+
+## Browser Execution Ladder
+
+All browser-based read operations follow a mandatory 5-level escalation order (**HS-UDO-011**): (1) Screenshot, (2) Page text extraction, (3) Targeted DOM query, (4) Full accessibility tree, (5) Static fallback request. Execution starts at Level 1 and escalates only on failure. Page type rules permit specific level skips (e.g., Looker dashboards skip Levels 2-4 due to canvas rendering). Every escalation is logged with reason. Reaching Level 5 means all automated options are exhausted — flag to user.
+
+**Full protocol:** See `BROWSER-LADDER.md`
 
 ---
 

@@ -11,6 +11,8 @@ The Bridge is a cross-agent communication system that lets two or more AI instan
 - Maintains a **running log** (`session-log.md`) of all cross-agent activity
 - Defines **adapters** for specific AI platforms (capabilities, limitations, how they connect)
 - Supports **error escalation** from self-resolve to bridge request to human intervention
+- Scores **request complexity** via pre-flight audit to prevent overloaded single-prompt execution
+- Enforces **browser execution ladder** — cheapest-first escalation for all browser-based reads
 
 ## Why It's Included
 
@@ -24,6 +26,8 @@ The Bridge is a cross-agent communication system that lets two or more AI instan
 .bridge/
 ├── README.md                           # This file
 ├── BRIDGE-PROTOCOL.md                  # AI-agnostic protocol specification
+├── PRE-FLIGHT-AUDIT.md                 # Complexity scoring for bridge requests
+├── BROWSER-LADDER.md                   # Escalation order for browser reads
 ├── bridge-queue.md                     # Request/response communication channel
 ├── bridge-state.json                   # Machine-readable status flags
 ├── session-log.md                      # Running log of all bridge activity

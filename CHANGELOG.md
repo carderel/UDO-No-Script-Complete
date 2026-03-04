@@ -1,5 +1,27 @@
 # Changelog
 
+## v4.7 (2026-03-04)
+
+### Added
+- Pre-Flight Complexity Audit (`PRE-FLIGHT-AUDIT.md`) — scores bridge request operations to prevent overloaded single-prompt execution
+- Browser Execution Ladder (`BROWSER-LADDER.md`) — mandatory 5-level cheapest-first escalation for browser reads
+- HS-UDO-010: pre-flight audit mandatory before executing bridge requests
+- HS-UDO-011: browser ladder level skips only permitted by page type rules
+- `Pre-flight [REQ-XXXX]` command and `pf` shortcut
+- Page type rules for Claude Desktop adapter (Looker, Sheets, SPAs, auth-required)
+- 2 new circuit breakers: complexity score >10 HALT, browser Level 5 flag-to-user
+
+### Changed
+- bridge-state.json: v1.1 with `preflight` tracking fields
+- BRIDGE-PROTOCOL.md: added Pre-Flight Audit and Browser Ladder sections
+- Bridge response template: added Escalation-Log field
+- Bridge request template: documented audit block approach (append-only compliant)
+- Claude Desktop INSTRUCTIONS.md: self-contained audit and ladder summaries
+- ORCHESTRATOR.md: updated directive 3.5, compliance self-check
+- CAPABILITIES.json: added `pre_flight_audit` and `browser_execution_ladder`
+
+---
+
 ## v4.6 (2026-03-04)
 
 ### Added

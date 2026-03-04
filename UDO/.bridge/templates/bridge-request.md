@@ -52,3 +52,13 @@ error messages (pasted verbatim, not summarized).}
 - `document-creation` — Need a document, presentation, or spreadsheet
 - `troubleshoot` — Something is broken, need help diagnosing
 - `other` — Doesn't fit above categories
+
+---
+
+## Pre-Flight Audit Block
+
+The pre-flight audit fields (Complexity-Score, Execution-Plan, Fallback-Assets) are **NOT** part of the request header above. They are populated by a `### Pre-Flight Audit` block that the receiving agent appends **below** the request after running the audit. This respects the append-only rule (HS-UDO-009).
+
+If you are the **receiving agent**: after reading a NEW request, run the pre-flight complexity audit (see `PRE-FLIGHT-AUDIT.md`) and append the audit block before executing. If no audit block exists below the request, the audit has not been run — do not execute.
+
+If you are the **requesting agent**: you do not need to add audit fields. The receiving agent handles this.
