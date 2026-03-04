@@ -1,5 +1,26 @@
 # Changelog
 
+## v4.6 (2026-03-04)
+
+### Added
+- Bridge module (`.bridge/`) — AI-agnostic cross-instance communication protocol
+- Claude Desktop adapter (first bridge adapter)
+- External agent template and claude-desktop agent definition
+- Backup command (`bu`) for mid-session full saves
+- 5 new hard stops (HS-UDO-004 through HS-UDO-008) and session end verification checklist
+- HS-UDO-009: append-only bridge files
+- Prompt-interval state updates (every 5 user prompts)
+- Bridge commands: `br`, `cb`, `bs` and more
+- `.project-catalog/communications/` for bridge archives
+
+### Changed
+- ORCHESTRATOR.md: added bridge directive 3.5, bridge circuit breakers, bridge resume steps
+- START_HERE.md: added bridge orientation step and command shortcuts
+- CAPABILITIES.json: added bridge section
+- README.md (UDO/): added `.bridge/` to directory tree
+
+---
+
 ## v4.5 (2026-02-22)
 
 ### Added
