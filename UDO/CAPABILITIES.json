@@ -1,18 +1,38 @@
 {
-  "environment": "",
-  "llm": "",
+  "environment": "Claude Code (CLI) on macOS",
+  "llm": "Claude Opus 4.6",
   "tools_available": {
     "file_read": true,
     "file_write": true,
-    "web_search": false,
-    "code_execution": false,
+    "file_edit": true,
+    "file_glob": true,
+    "file_grep": true,
+    "bash_execution": true,
+    "web_search": true,
+    "web_fetch": true,
+    "code_execution": true,
     "image_generation": false,
-    "browser_control": false
+    "browser_control": false,
+    "git_operations": true,
+    "subagent_spawning": true,
+    "mcp_servers": true
   },
   "constraints": {
     "max_file_size": null,
-    "allowed_languages": [],
-    "restricted_paths": []
+    "allowed_languages": ["all"],
+    "restricted_paths": [],
+    "context_window": "large with auto-compression",
+    "parallel_tool_calls": true
   },
-  "notes": "Update this file to reflect your AI environment's capabilities."
+  "platform": {
+    "os": "macOS (Darwin 25.3.0)",
+    "shell": "zsh",
+    "package_managers": ["brew", "npm", "pip"]
+  },
+  "bridge": {
+    "enabled": true,
+    "adapters_available": ["claude-desktop"],
+    "notes": "Bridge module active. Claude Desktop adapter configured."
+  },
+  "notes": "Updated 2026-03-03. Claude Code has full file system access, bash execution, web search, and can spawn subagents for parallel work. Bridge module installed with Claude Desktop adapter."
 }

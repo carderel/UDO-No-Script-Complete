@@ -31,6 +31,8 @@ The catalog provides:
 │   └── DEC_001.md
 ├── agents/             # Agent activity logs
 │   └── agent-name-log.md
+├── communications/     # Bridge communication archives
+│   └── .gitkeep
 ├── errors/             # Error reports
 │   └── ERR_001.md
 ├── handoffs/           # Handoff documents
@@ -98,6 +100,15 @@ When transferring between sessions or AI systems:
 - Recommended next steps
 
 **Format:** `HANDOFF_XXX.md`
+
+### Communications (`communications/`)
+
+Archive for bridge communication records:
+- Completed bridge queue entries moved here during session archival
+- Cross-agent coordination history
+- Bridge session log snapshots
+
+**Format:** Archived bridge entries, organized by date or topic.
 
 ### Archive (`archive/`)
 

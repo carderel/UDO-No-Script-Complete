@@ -55,6 +55,7 @@ UDO/
 ├── COMMANDS.md             # Available commands
 │
 ├── .agents/                # Specialized AI agents for specific tasks
+├── .bridge/                # Cross-agent bridge for multi-AI coordination
 ├── .checkpoints/           # Saved progress snapshots
 ├── .inputs/                # Source materials and references
 ├── .memory/                # Persistent facts and working notes
@@ -96,6 +97,7 @@ For deliverables with claims, UDO requires:
 | Folder | Purpose |
 |--------|---------|
 | `.agents/` | Specialized AI agents for focused tasks |
+| `.bridge/` | Cross-agent communication bridge for multi-AI coordination |
 | `.checkpoints/` | Progress snapshots for recovery |
 | `.inputs/` | Source materials, briefs, reference docs |
 | `.memory/` | Persistent facts and working notes |

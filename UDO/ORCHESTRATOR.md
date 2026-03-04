@@ -21,6 +21,13 @@ You **MUST** checkpoint after:
 - Before any risky/destructive operation
 - At session end
 
+### 2.5. PROMPT-INTERVAL STATE UPDATES (MANDATORY)
+You **MUST** update `PROJECT_STATE.json` every **5 user prompts** if project state has changed.
+- Tracks via `prompt_counter.count_since_last_state_update` in PROJECT_STATE.json
+- Resets to 0 after each update
+- Protects against lost context from unexpected disconnections or restarts
+- See **HS-UDO-008** in HARD_STOPS.md
+
 ### 3. AGENT CREATION THRESHOLD (MANDATORY)
 **If your todo list requires 2 or more distinct personas/specializations, you MUST create agents.**
 
@@ -143,6 +150,7 @@ If unclear which mode applies, use this test:
 □ Am I documenting decisions? (major choices go to .project-catalog/decisions/)
 □ Am I in the right mode? (RC for analysis, Persona for delivery)
 □ If in Persona mode, do I have a handoff packet?
+□ If bridge is active, have I checked for pending bridge responses?
 ```
 
 **If any answer is "no" when it should be "yes" → STOP and fix it.**
@@ -166,6 +174,14 @@ If unclear which mode applies, use this test:
 |-----------|--------------|
 | `Handoff` | Full handoff - create session log, update state |
 | `Quick handoff` | Minimal handoff - summary + next steps only |
+
+### Mid-Session Save
+
+| User Says | What AI Does |
+|-----------|--------------|
+| `Backup` | Run ALL backup/documentation protocols: update PROJECT_STATE.json, create/update session log, create checkpoint, reset prompt counter, check bridge state, log undocumented decisions, flush working memory. Confirm when complete. |
+| `Back it up` | Same as Backup |
+| `Save state` | Same as Backup |
 
 ### Recovery Commands
 
@@ -192,6 +208,17 @@ If unclear which mode applies, use this test:
 |-----------|--------------|
 | `Compliance check` | Run self-check, report any gaps |
 | `Catch up logging` | Create any missing logs/checkpoints/decisions |
+
+### Bridge Commands
+
+| User Says | What AI Does |
+|-----------|--------------|
+| `Bridge request [description]` | Write structured request to `.bridge/bridge-queue.md` |
+| `Check bridge` | Read `bridge-queue.md` for responses, apply results |
+| `Bridge status` | Read `bridge-state.json`, report status |
+| `Bridge log` | Show recent entries from `.bridge/session-log.md` |
+| `Enable bridge` | Activate bridge module, initialize state |
+| `List adapters` | Show available adapters in `.bridge/adapters/` |
 
 ---
 
@@ -266,6 +293,8 @@ Ended: [timestamp]
 | No checkpoint for 5+ todos | HALT, create checkpoint immediately |
 | **Persona mode without handoff** | **HALT, require RC analysis first** |
 | **Confidence stated without evidence** | **HALT, apply RC constraints** |
+| Bridge request pending > 30 min | Flag for human attention, update bridge-state.json |
+| Bridge error_state flag true | HALT bridge requests, escalate to human |
 
 ---
 
@@ -285,6 +314,9 @@ Analysis → RC Mode. Delivery → Persona Mode. Never mix.
 
 ### 3. Environment Awareness
 Check `CAPABILITIES.json` before assigning tasks.
+
+### 3.5. Bridge Awareness
+If `.bridge/` exists and has active adapters, check `bridge-state.json` during resume. Before attempting tasks outside your capabilities (per `CAPABILITIES.json`), check if a bridge adapter can handle it. Follow error escalation: self-resolve (2 attempts) → bridge request → human intervention. See `BRIDGE-PROTOCOL.md` for full details.
 
 ### 4. State Sovereignty
 All project state flows through `PROJECT_STATE.json`. Read before acting. Update after completing.
@@ -326,9 +358,10 @@ Check `NON_GOALS.md` before expanding scope.
 3. Read PROJECT_STATE.json
 4. Read LESSONS_LEARNED.md (active lessons only)
 5. Read most recent session log
-6. Run compliance self-check
-7. Give oversight report
-8. Ask: "Ready to continue with [next todo]?"
+6. If `.bridge/` exists: Read `bridge-state.json`, check for pending requests/responses
+7. Run compliance self-check
+8. Give oversight report
+9. Ask: "Ready to continue with [next todo]?"
 
 ### Deep Resume (`Deep resume`)
 1. Everything in Quick Resume, plus:
@@ -337,7 +370,8 @@ Check `NON_GOALS.md` before expanding scope.
 4. Read last 3 session logs
 5. Check for any compliance gaps
 6. Check for orphaned handoff packets
-7. Give detailed oversight report with recent history
+7. If `.bridge/` exists: Read last 3 entries of `.bridge/session-log.md`
+8. Give detailed oversight report with recent history
 
 ---
 
