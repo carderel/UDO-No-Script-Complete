@@ -1,75 +1,12 @@
 {
-  "goal": "Develop, document, and distribute UDO v4.7 framework across GitHub repositories with install/upgrade tooling",
-  "phase": "active-development",
-  "todos": [
-    "Test upgrade on Windows with fixed ps1",
-    "Test bridge end-to-end with Desktop Claude on a real project"
-  ],
+  "goal": "",
+  "phase": "",
+  "todos": [],
   "in_progress": [],
-  "completed": [
-    "Evidence & Teach-Back Protocol created",
-    "11 README files across all UDO directories",
-    "3 GitHub repos set up (Ultimate-UDO, UDO-No-Script-Complete, UDO-Upgrade-Kit)",
-    "Upgrade tool built (upgrade.sh + upgrade.ps1)",
-    "Mac upgrade test passed",
-    "Windows reserved name bug fixed in upgrade.ps1",
-    "Backfilled 2026-02-23 session log",
-    "Updated PROJECT_STATE.json to reflect actual state",
-    "Updated CAPABILITIES.json for Claude Code environment",
-    "Hardened HARD_STOPS.md with HS-UDO-004 through HS-UDO-008",
-    "Added Session End Verification checklist to HARD_STOPS.md",
-    "Added LL-001 and LL-002 to LESSONS_LEARNED.md",
-    "Added prompt-interval state update rule (HS-UDO-008, every 5 prompts)",
-    "Updated ORCHESTRATOR.md with section 2.5 (prompt-interval updates)",
-    "Built .bridge/ module — 11 files: protocol, state, queue, log, templates, adapters",
-    "Created Claude Desktop adapter (adapter.md + INSTRUCTIONS.md)",
-    "Created external-agent.md template in .templates/",
-    "Created claude-desktop.md agent in .agents/",
-    "Created .project-catalog/communications/ directory",
-    "Updated ORCHESTRATOR.md with bridge commands, directive 3.5, circuit breakers, resume steps",
-    "Added HS-UDO-009 (append-only bridge files) to HARD_STOPS.md",
-    "Updated COMMANDS.md with bridge section + shortcuts",
-    "Updated START_HERE.md with bridge orientation step",
-    "Updated CAPABILITIES.json with bridge section",
-    "Updated README.md with .bridge/ in directory tree and folder reference",
-    "Updated .project-catalog/README.md with communications section",
-    "Added Backup command (bu) to COMMANDS.md, ORCHESTRATOR.md, START_HERE.md",
-    "Pushed .bridge/ module + modified files + VERSION bump to UDO-No-Script-Complete repo",
-    "Pushed fixed upgrade.ps1 to UDO-Upgrade-Kit repo (upgrade.sh was already current)",
-    "Updated VERSION from 4.5 to 4.6 for bridge addition",
-    "Created PRE-FLIGHT-AUDIT.md — complexity scoring protocol for bridge requests",
-    "Created BROWSER-LADDER.md — 5-level browser read escalation protocol",
-    "Updated bridge templates (request + response) with audit and escalation-log fields",
-    "Updated bridge infrastructure (state v1.1, protocol, README) with new protocol references",
-    "Updated Claude Desktop adapter + instructions with page type rules and self-contained summaries",
-    "Added HS-UDO-010 (pre-flight audit mandatory) and HS-UDO-011 (browser ladder mandatory)",
-    "Added 2 circuit breakers to ORCHESTRATOR.md, updated directive 3.5 and compliance self-check",
-    "Added Pre-flight command + pf shortcut to COMMANDS.md",
-    "Updated CAPABILITIES.json with pre_flight_audit and browser_execution_ladder",
-    "Bumped VERSION from 4.6 to 4.7"
-  ],
+  "completed": [],
   "blockers": [],
-  "agent_registry": [
-    {
-      "name": "claude-desktop",
-      "type": "external-bridged",
-      "status": "on-demand",
-      "definition": ".agents/claude-desktop.md",
-      "adapter": ".bridge/adapters/claude-desktop/adapter.md"
-    }
-  ],
-  "checkpoints": [
-    {
-      "name": "post-bridge-integration",
-      "timestamp": "2026-03-03",
-      "description": "Bridge module fully integrated. Protocol hardening complete. Backup command added."
-    },
-    {
-      "name": "post-repo-push",
-      "timestamp": "2026-03-04",
-      "description": "All repos updated. Bridge + modified files pushed to UDO-No-Script-Complete. Fixed upgrade.ps1 pushed to UDO-Upgrade-Kit. VERSION bumped to 4.6."
-    }
-  ],
+  "agent_registry": [],
+  "checkpoints": [],
   "circuit_breaker": {
     "triggered": false,
     "reason": null,
@@ -82,49 +19,25 @@
   "auto_checkpoint": {
     "enabled": true,
     "todos_since_checkpoint": 0,
-    "last_auto_checkpoint": "2026-03-04"
+    "last_auto_checkpoint": null
   },
   "prompt_counter": {
     "count_since_last_state_update": 0,
     "threshold": 5,
-    "last_state_update": "2026-03-04"
+    "last_state_update": null
   },
   "bridge": {
     "enabled": true,
-    "active_adapters": ["claude-desktop"],
+    "active_adapters": [],
     "pending_requests": 0,
     "last_bridge_activity": null
   },
   "current_session": {
-    "started": "2026-03-04",
-    "llm": "Claude Opus 4.6 (Claude Code)",
-    "actions": [
-      "Created PRE-FLIGHT-AUDIT.md and BROWSER-LADDER.md in .bridge/",
-      "Modified bridge templates (request + response)",
-      "Updated bridge-state.json to v1.1 with preflight fields",
-      "Updated BRIDGE-PROTOCOL.md with new sections",
-      "Updated .bridge/README.md with new files and features",
-      "Added page type rules to Claude Desktop adapter.md",
-      "Added audit + ladder summaries to Claude Desktop INSTRUCTIONS.md",
-      "Added HS-UDO-010 and HS-UDO-011 to HARD_STOPS.md",
-      "Added 2 circuit breakers + updated directive 3.5 + compliance check in ORCHESTRATOR.md",
-      "Added Pre-flight command and pf shortcut to COMMANDS.md",
-      "Updated CAPABILITIES.json with new bridge capabilities",
-      "Bumped VERSION to 4.7",
-      "Updated PROJECT_STATE.json"
-    ]
+    "started": null,
+    "llm": null,
+    "actions": []
   },
-  "notes": "v4.7 complete. Pre-flight audit + browser ladder added. Remaining: Windows upgrade test, bridge end-to-end test, push to UDO-No-Script-Complete.",
-  "repositories": {
-    "Ultimate-UDO": "https://github.com/carderel/Ultimate-UDO",
-    "UDO-No-Script-Complete": "https://github.com/carderel/UDO-No-Script-Complete",
-    "UDO-Upgrade-Kit": "https://github.com/carderel/UDO-Upgrade-Kit"
-  },
-  "local_paths": {
-    "UDO-No-Script-Complete": "/Users/flackfizer/Documents/Projects/UDO-No-Script-Complete",
-    "UDO-Upgrade-Kit": "/Users/flackfizer/Documents/Projects/UDO-Upgrade-Kit-repo",
-    "UDO-Upgrade-local": "/Users/flackfizer/Documents/Projects/UDO-Upgrade/",
-    "Ultimate-UDO": "/Users/flackfizer/Documents/GitHub/Ultimate-UDO",
-    "Source-modules": "/Users/flackfizer/Documents/Projects/udo-modular"
-  }
+  "notes": "Fresh UDO installation. Fill in goal, phase, and project details from PROJECT_META.json.",
+  "repositories": {},
+  "local_paths": {}
 }

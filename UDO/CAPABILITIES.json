@@ -1,40 +1,40 @@
 {
-  "environment": "Claude Code (CLI) on macOS",
-  "llm": "Claude Opus 4.6",
+  "environment": "",
+  "llm": "",
   "tools_available": {
-    "file_read": true,
-    "file_write": true,
-    "file_edit": true,
-    "file_glob": true,
-    "file_grep": true,
-    "bash_execution": true,
-    "web_search": true,
-    "web_fetch": true,
-    "code_execution": true,
-    "image_generation": false,
-    "browser_control": false,
-    "git_operations": true,
-    "subagent_spawning": true,
-    "mcp_servers": true
+    "file_read": null,
+    "file_write": null,
+    "file_edit": null,
+    "file_glob": null,
+    "file_grep": null,
+    "bash_execution": null,
+    "web_search": null,
+    "web_fetch": null,
+    "code_execution": null,
+    "image_generation": null,
+    "browser_control": null,
+    "git_operations": null,
+    "subagent_spawning": null,
+    "mcp_servers": null
   },
   "constraints": {
     "max_file_size": null,
-    "allowed_languages": ["all"],
+    "allowed_languages": [],
     "restricted_paths": [],
-    "context_window": "large with auto-compression",
-    "parallel_tool_calls": true
+    "context_window": "",
+    "parallel_tool_calls": null
   },
   "platform": {
-    "os": "macOS (Darwin 25.3.0)",
-    "shell": "zsh",
-    "package_managers": ["brew", "npm", "pip"]
+    "os": "",
+    "shell": "",
+    "package_managers": []
   },
   "bridge": {
-    "enabled": true,
-    "adapters_available": ["claude-desktop"],
-    "pre_flight_audit": true,
-    "browser_execution_ladder": true,
-    "notes": "Bridge module active. Claude Desktop adapter configured. Pre-flight complexity audit and browser execution ladder enforced on all bridge requests."
+    "enabled": false,
+    "adapters_available": [],
+    "pre_flight_audit": false,
+    "browser_execution_ladder": false,
+    "notes": ""
   },
-  "notes": "Updated 2026-03-03. Claude Code has full file system access, bash execution, web search, and can spawn subagents for parallel work. Bridge module installed with Claude Desktop adapter."
+  "notes": "Fill in your environment capabilities on first initialization. This file tells UDO what tools and resources are available to you."
 }
