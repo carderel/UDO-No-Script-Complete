@@ -278,6 +278,8 @@ Append archive marker to the active session transcript:
 ```
 Confirm transcript is at: `.project-catalog/history/YYYY-MM-DD-HHMM-session-transcript.md`
 
+**Transcript Persistence:** Session transcripts are written to disk **in real-time after each response completes**. This guarantees durability: if power is lost, you have all exchanges up to the last completed response. Only the current in-progress response (if any) could be lost.
+
 ### 2. Update PROJECT_STATE.json
 
 ### 3. Final Checkpoint

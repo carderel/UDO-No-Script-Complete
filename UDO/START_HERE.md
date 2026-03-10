@@ -109,7 +109,7 @@ Complete these orientation steps:
 Before starting ANY work, confirm you will:
 
 - [ ] Log this session to `.project-catalog/sessions/` before ending
-- [ ] Create session transcript at `.project-catalog/history/` at session start, append archive marker when ending
+- [ ] Create session transcript at `.project-catalog/history/` at session start (written in real-time after each response), append archive marker when ending
 - [ ] Auto-checkpoint after every 3 completed todos
 - [ ] Create agents if task requires 2+ distinct personas
 - [ ] Document major decisions in `.project-catalog/decisions/`
