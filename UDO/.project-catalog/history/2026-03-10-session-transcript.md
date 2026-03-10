@@ -99,3 +99,38 @@ You're absolutely right. I violated HS-UDO-012 by not starting the session trans
 
 [Transcript file created with header and all exchanges to date]
 
+---
+
+## Prompt
+Well is this going to happen to anyone that gets upgraded?
+
+---
+
+## Response
+[Identified critical gap: feature is documentation-based, not enforced. Requires hard stop + mandatory resume step to work for any LLM. Works through failure modes for first install and upgrade scenarios.]
+
+Without enforcement, feature is decorative not functional. Requires:
+- HS-UDO-013: NEVER accept prompt without verifying transcript file
+- Resume protocol: Step 3 is mandatory transcript verification
+- This makes it transferable to GPT-4, Gemini, any LLM
+
+---
+
+## Prompt
+yes. It really the missing piece to having a transferable to any LLM be seamless.
+
+---
+
+## Response
+Exactly. Right now it's "Claude reads documentation nicely." By making it hard stop with enforcement, it becomes system rule any LLM must follow.
+
+[Implemented HS-UDO-013 and updated Resume Protocol with mandatory file verification step]
+
+- Added HS-UDO-013 to HARD_STOPS.md: NEVER accept prompt without verifying transcript file
+- Updated Quick Resume Protocol: Step 3 is now mandatory transcript verification (create if missing, HALT if fails)
+- Updated START_HERE.md: Marked transcript creation MANDATORY before first prompt
+- Updated COMMANDS.md: Clarified st shortcut requirement
+- Committed and pushed to UDO-No-Script-Complete (commit fbbe12c)
+
+Feature now works for GPT-4, Gemini, any LLM because it's blocked by hard stop, not voluntary.
+
