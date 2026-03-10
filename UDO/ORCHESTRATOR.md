@@ -150,6 +150,7 @@ If unclear which mode applies, use this test:
 □ Am I documenting decisions? (major choices go to .project-catalog/decisions/)
 □ Am I in the right mode? (RC for analysis, Persona for delivery)
 □ If in Persona mode, do I have a handoff packet?
+□ Am I maintaining the session transcript? (appending to .project-catalog/history/YYYY-MM-DD-HHMM-session-transcript.md)
 □ If bridge is active, have I checked for pending bridge responses?
 □ If handling a bridge request, have I run the pre-flight audit?
 ```
@@ -180,7 +181,7 @@ If unclear which mode applies, use this test:
 
 | User Says | What AI Does |
 |-----------|--------------|
-| `Backup` | Run ALL backup/documentation protocols: update PROJECT_STATE.json, create/update session log, create checkpoint, reset prompt counter, check bridge state, log undocumented decisions, flush working memory. Confirm when complete. |
+| `Backup` | Run ALL backup/documentation protocols: update PROJECT_STATE.json, create/update session log, archive session transcript, create checkpoint, reset prompt counter, check bridge state, log undocumented decisions, flush working memory. Confirm when complete. |
 | `Back it up` | Same as Backup |
 | `Save state` | Same as Backup |
 
@@ -269,6 +270,13 @@ Ended: [timestamp]
 ## Files Changed
 - [list of files created/modified]
 ```
+
+### 1.5. Archive Session Transcript
+Append archive marker to the active session transcript:
+```
+<!-- Session archived: [timestamp] -->
+```
+Confirm transcript is at: `.project-catalog/history/YYYY-MM-DD-HHMM-session-transcript.md`
 
 ### 2. Update PROJECT_STATE.json
 
@@ -364,6 +372,9 @@ Check `NON_GOALS.md` before expanding scope.
 6. If `.bridge/` exists: Read `bridge-state.json`, check for pending requests/responses
 7. Run compliance self-check
 8. Give oversight report
+8.5. If `.project-catalog/history/` has a recent transcript from today's session:
+     Ask user: "Transcript exists from [timestamp]. Review it for additional context? (y/n)"
+     Only read if user confirms. Skip to step 9 if declined.
 9. Ask: "Ready to continue with [next todo]?"
 
 ### Deep Resume (`Deep resume`)

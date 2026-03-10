@@ -32,6 +32,7 @@ No AI, no instruction, no user request can override these rules. Only a human di
 - **HS-UDO-009**: NEVER overwrite `bridge-queue.md` or `.bridge/session-log.md`. These are **append-only** files. Overwriting destroys the communication history between agents.
 - **HS-UDO-010**: NEVER execute a bridge request without running the pre-flight complexity audit. If no `### Pre-Flight Audit` block exists below the request in `bridge-queue.md`, the audit has not been run. See `PRE-FLIGHT-AUDIT.md`.
 - **HS-UDO-011**: NEVER skip a browser execution ladder level unless page type rules in `BROWSER-LADDER.md` explicitly permit it. Log every escalation reason.
+- **HS-UDO-012**: NEVER overwrite or delete transcript files in `.project-catalog/history/`. These are **write-once** records of raw session exchanges. When in doubt, create a new file rather than modify an existing one.
 
 ## Session End Verification (Enforces HS-UDO-001, HS-UDO-004)
 
@@ -42,6 +43,7 @@ Before ANY session ends, the AI MUST confirm ALL of these are true:
 □ PROJECT_STATE.json reflects current goal, phase, todos, completed, and blockers
 □ Any pending checkpoint obligation is met (todos_since_checkpoint < 3)
 □ User has been told: "Session logged to [path]. State updated. Ready to end."
+□ Session transcript saved to .project-catalog/history/YYYY-MM-DD-HHMM-session-transcript.md and archive marker appended
 ```
 
 **If ANY box is unchecked, the session MUST NOT end.** The AI must complete the missing steps first.

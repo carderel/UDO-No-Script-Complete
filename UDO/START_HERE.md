@@ -35,6 +35,7 @@ Complete these orientation steps:
 > - **Goal:** [from PROJECT_STATE.json]
 > - **Phase:** [current phase]
 > - **Last session:** [summary from most recent session log]
+> - **Transcript:** [path if exists, or "none"] — offer to review if user wants additional context
 > - **Next steps:** [from PROJECT_STATE.json or last session]
 > Ready to continue."
 
@@ -108,6 +109,7 @@ Complete these orientation steps:
 Before starting ANY work, confirm you will:
 
 - [ ] Log this session to `.project-catalog/sessions/` before ending
+- [ ] Create session transcript at `.project-catalog/history/` at session start, append archive marker when ending
 - [ ] Auto-checkpoint after every 3 completed todos
 - [ ] Create agents if task requires 2+ distinct personas
 - [ ] Document major decisions in `.project-catalog/decisions/`
