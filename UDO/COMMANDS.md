@@ -144,7 +144,7 @@
 | `bf` | Backfill sessions |
 | `cc` | Compliance check |
 | `rc` | RC mode |
-| `st` | Session transcript (create/view current) |
+| `st` | Session transcript (verify exists, view current, required before work starts per HS-UDO-013) |
 | `br` | Bridge request |
 | `cb` | Check bridge |
 | `bs` | Bridge status |

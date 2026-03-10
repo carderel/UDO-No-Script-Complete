@@ -368,16 +368,21 @@ Check `NON_GOALS.md` before expanding scope.
 ### Quick Resume (`Resume`)
 1. Read HARD_STOPS.md
 2. Read REASONING_CONTRACT.md (skim key constraints)
-3. Read PROJECT_STATE.json
-4. Read LESSONS_LEARNED.md (active lessons only)
-5. Read most recent session log
-6. If `.bridge/` exists: Read `bridge-state.json`, check for pending requests/responses
-7. Run compliance self-check
-8. Give oversight report
-8.5. If `.project-catalog/history/` has a recent transcript from today's session:
-     Ask user: "Transcript exists from [timestamp]. Review it for additional context? (y/n)"
-     Only read if user confirms. Skip to step 9 if declined.
-9. Ask: "Ready to continue with [next todo]?"
+3. **Verify/Create Session Transcript (MANDATORY — see HS-UDO-013)**
+   - Check: Does `.project-catalog/history/` contain a transcript from TODAY (today's date)?
+   - If YES: Note the filename. Append subsequent prompts/responses to it.
+   - If NO: Create new file `.project-catalog/history/YYYY-MM-DD-HHMM-session-transcript.md` with session header
+   - If creation FAILS: HALT. Report error to user. Do not proceed until file is writable.
+4. Read PROJECT_STATE.json
+5. Read LESSONS_LEARNED.md (active lessons only)
+6. Read most recent session log
+7. If `.bridge/` exists: Read `bridge-state.json`, check for pending requests/responses
+8. Run compliance self-check
+9. Give oversight report
+10. If today's transcript exists and has content:
+    Ask user: "Transcript exists from [timestamp]. Review it for additional context? (y/n)"
+    Only read if user confirms.
+11. Ask: "Ready to continue with [next todo]?"
 
 ### Deep Resume (`Deep resume`)
 1. Everything in Quick Resume, plus:

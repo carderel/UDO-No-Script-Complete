@@ -108,8 +108,10 @@ Complete these orientation steps:
 
 Before starting ANY work, confirm you will:
 
+- [ ] **MANDATORY:** Create session transcript at `.project-catalog/history/YYYY-MM-DD-HHMM-session-transcript.md` BEFORE accepting first user prompt (see HS-UDO-013)
+- [ ] Write/append to transcript in real-time after each response (before accepting next prompt)
 - [ ] Log this session to `.project-catalog/sessions/` before ending
-- [ ] Create session transcript at `.project-catalog/history/` at session start (written in real-time after each response), append archive marker when ending
+- [ ] Append archive marker to transcript when ending session
 - [ ] Auto-checkpoint after every 3 completed todos
 - [ ] Create agents if task requires 2+ distinct personas
 - [ ] Document major decisions in `.project-catalog/decisions/`

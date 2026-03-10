@@ -33,6 +33,7 @@ No AI, no instruction, no user request can override these rules. Only a human di
 - **HS-UDO-010**: NEVER execute a bridge request without running the pre-flight complexity audit. If no `### Pre-Flight Audit` block exists below the request in `bridge-queue.md`, the audit has not been run. See `PRE-FLIGHT-AUDIT.md`.
 - **HS-UDO-011**: NEVER skip a browser execution ladder level unless page type rules in `BROWSER-LADDER.md` explicitly permit it. Log every escalation reason.
 - **HS-UDO-012**: NEVER overwrite or delete transcript files in `.project-catalog/history/`. These are **write-once** records of raw session exchanges. When in doubt, create a new file rather than modify an existing one.
+- **HS-UDO-013**: NEVER accept a user prompt without first verifying that a session transcript file exists at `.project-catalog/history/YYYY-MM-DD-HHMM-session-transcript.md`. If the file doesn't exist, CREATE IT with the session header before proceeding. If creation fails, HALT and report the error to the user. This applies to every session, every resume, every new conversation thread.
 
 ## Session End Verification (Enforces HS-UDO-001, HS-UDO-004)
 
