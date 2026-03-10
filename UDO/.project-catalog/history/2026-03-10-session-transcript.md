@@ -134,3 +134,22 @@ Exactly. Right now it's "Claude reads documentation nicely." By making it hard s
 
 Feature now works for GPT-4, Gemini, any LLM because it's blocked by hard stop, not voluntary.
 
+---
+
+## Prompt
+Did we update the version?
+
+---
+
+## Response
+No, VERSION was still 4.9. Bumped to 4.10 because upgrade script requires version change to detect new release.
+
+[Updated VERSION, PROJECT_META.json, MANIFEST.json]
+[Committed and pushed both repos]
+
+- UDO-No-Script-Complete: commit fafc1c8 (VERSION 4.9→4.10, PROJECT_META.json updated, transcript updated)
+- UDO-Upgrade-Kit: commit 8944a14 (MANIFEST.json version 4.9→4.10)
+- Both pushed to origin/main
+
+v4.10 is the version with enforcement hardening (HS-UDO-013) that makes feature work for any LLM.
+
